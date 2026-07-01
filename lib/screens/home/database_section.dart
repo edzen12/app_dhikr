@@ -36,11 +36,51 @@ class DatabaseSection extends StatelessWidget {
                   return Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.grey,
+                      color: const Color.fromARGB(255, 242, 242, 242),
                     ),
                     width: double.infinity,
                     margin: const EdgeInsets.only(bottom: 10),
-                    child: Row(),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          width: 60,
+                          alignment: Alignment.center,
+                          child: Text(
+                            index.toString(),
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 30,
+                          width: 1,
+                          color: Colors.white,
+                          margin: EdgeInsets.only(right: 20),
+                        ),
+                        Expanded(
+                          child: Text(
+                            'Описание для зикра Описание для зикра Описание для зикра Описание для зикра',
+                            style: TextStyle(fontSize: 13, height: 1.2),
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 2,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15),
+                          child: Text(
+                            '01.07.2026',
+                            style: TextStyle(
+                              fontSize: 10,
+                              color: Colors.blueGrey,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   );
                 }),
               ),
