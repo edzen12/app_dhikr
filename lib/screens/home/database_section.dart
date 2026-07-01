@@ -31,7 +31,7 @@ class DatabaseSection extends StatelessWidget {
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: 10,
+                itemCount: 100,
                 itemBuilder: ((context, index) {
                   return Container(
                     decoration: BoxDecoration(
@@ -74,10 +74,16 @@ class DatabaseSection extends StatelessWidget {
                           child: Text(
                             '01.07.2026',
                             style: TextStyle(
-                              fontSize: 10,
+                              fontSize: 11,
                               color: Colors.blueGrey,
                             ),
                           ),
+                        ),
+                        Container(
+                          width: 50,
+                          height: 50,
+                          alignment: Alignment.center,
+                          child: SvgPicture.asset('assets/icons/dots.svg'),
                         ),
                       ],
                     ),
