@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -79,11 +80,62 @@ class DatabaseSection extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Container(
-                          width: 50,
-                          height: 50,
-                          alignment: Alignment.center,
-                          child: SvgPicture.asset('assets/icons/dots.svg'),
+                        GestureDetector(
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return CupertinoAlertDialog(
+                                  title: Text('Изменить зикр'),
+                                  content: Column(
+                                    children: [
+                                      const SizedBox(height: 10),
+                                      Text('Счетчик: 33'),
+                                      const SizedBox(height: 15),
+                                      CupertinoTextField(
+                                        placeholder: 'Описание зикра',
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          TextButton(
+                                            onPressed: () {},
+                                            child: Text(
+                                              'Удалить',
+                                              style: TextStyle(
+                                                color: Colors.red,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {},
+                                            child: Text(
+                                              'Сохранить',
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Color.fromARGB(255, 242, 242, 242),
+                            ),
+                            width: 50,
+                            height: 50,
+                            alignment: Alignment.center,
+                            child: SvgPicture.asset('assets/icons/dots.svg'),
+                          ),
                         ),
                       ],
                     ),
