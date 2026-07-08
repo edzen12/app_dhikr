@@ -1,21 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class TopSection extends StatefulWidget {
-  const TopSection({super.key});
+import '../settings/setting_page.dart';
 
-  @override
-  State<TopSection> createState() => _TopSectionState();
-}
+class TopSection extends StatelessWidget {
+  final bool activity;
+  final Function toggleActivity;
 
-class _TopSectionState extends State<TopSection> {
-  bool activity = true;
-
-  void toggleActivity(bool toggle) {
-    if (toggle != activity) {
-      setState(() => activity = toggle);
-    }
-  }
+  const TopSection(this.activity, this.toggleActivity, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -76,16 +68,25 @@ class _TopSectionState extends State<TopSection> {
               ),
             ),
           ),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.white,
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => SettingPage(),
+                ),
+              );
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.white,
+              ),
+              margin: EdgeInsets.only(left: 15),
+              height: 38,
+              width: 54,
+              alignment: Alignment.center,
+              child: SvgPicture.asset('assets/icons/menu.svg'),
             ),
-            margin: EdgeInsets.only(left: 15),
-            height: 38,
-            width: 54,
-            alignment: Alignment.center,
-            child: SvgPicture.asset('assets/icons/menu.svg'),
           ),
         ],
       ),
