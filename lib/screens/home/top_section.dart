@@ -9,6 +9,14 @@ class TopSection extends StatefulWidget {
 }
 
 class _TopSectionState extends State<TopSection> {
+  bool activity = true;
+
+  void toggleActivity(bool toggle) {
+    if (toggle != activity) {
+      setState(() => activity = toggle);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,30 +33,42 @@ class _TopSectionState extends State<TopSection> {
               child: Row(
                 children: [
                   Expanded(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      height: 30,
-                      alignment: Alignment.center,
-                      child: Text(
-                        'Активные',
-                        style: TextStyle(color: Colors.white, fontSize: 14),
+                    child: GestureDetector(
+                      onTap: () => toggleActivity(true),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: activity == true ? Colors.blue : Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        height: 30,
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Активные',
+                          style: TextStyle(
+                            color: activity ? Colors.white : Colors.grey,
+                            fontSize: 14,
+                          ),
+                        ),
                       ),
                     ),
                   ),
                   Expanded(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      height: 30,
-                      alignment: Alignment.center,
-                      child: Text(
-                        'Сохраненные',
-                        style: TextStyle(color: Colors.grey, fontSize: 14),
+                    child: GestureDetector(
+                      onTap: () => toggleActivity(false),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: activity ? Colors.white : Colors.blue,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        height: 30,
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Сохраненные',
+                          style: TextStyle(
+                            color: activity ? Colors.grey : Colors.white,
+                            fontSize: 14,
+                          ),
+                        ),
                       ),
                     ),
                   ),
